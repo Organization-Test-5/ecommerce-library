@@ -1,0 +1,74 @@
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'eco-category-pill',
+  standalone: true,
+  imports: [CommonModule],
+  encapsulation: ViewEncapsulation.None,
+  styles: [`
+    .eco-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all 0.15s ease;
+      user-select: none;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .eco-pill:active {
+      transform: scale(0.95);
+    }
+    .eco-pill:focus-visible {
+      ring: 2px solid #0066FF;
+      ring-offset: 1px;
+    }
+    .eco-pill-active {
+      background-color: #0066FF;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.35);
+    }
+    .eco-pill-inactive {
+      background-color: #ffffff;
+      color: #6C7A89;
+      border: 1px solid #E9ECEF;
+    }
+    .eco-pill-inactive:hover {
+      border-color: #0066FF;
+      color: #0066FF;
+    }
+    .eco-pill-emoji {
+      font-size: 0.875rem;
+      line-height: 1;
+    }
+  `],
+  template: `
+    <button
+      type="button"
+      (click)="onClick()"
+      [class]="active ? 'eco-pill eco-pill-active' : 'eco-pill eco-pill-inactive'"
+    >
+      <span *ngIf="emoji" class="eco-pill-emoji">{{ emoji }}</span>
+      {{ label }}
+    </button>
+  `,
+})
+export class CategoryPillComponent {
+  @Input() label = '';
+  @Input() active = false;
+  @Input() emoji = '';
+
+  @Output() pillClick = new EventEmitter<string>();
+
+  onClick(): void {
+    this.pillClick.emit(this.label);
+  }
+}

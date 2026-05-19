@@ -1,0 +1,18 @@
+{
+  "name": "@ecommerce/components",
+  "version": "0.1.0",
+  "description": "Ecommerce component library for Angular",
+  "keywords": ["angular", "components", "ecommerce", "design-system"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ecommerce-library.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

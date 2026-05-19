@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": "1fcf90df-aeec-493c-9b0e-f34e4108bb5d"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "ecommerce-components": {
+      "projectType": "library",
+      "root": "projects/ecommerce-components",
+      "sourceRoot": "projects/ecommerce-components/src",
+      "prefix": "eco",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ecommerce-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ecommerce-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/ecommerce-components/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  }
+}
