@@ -1,0 +1,8 @@
+<button
+  type="button"
+  (click)="onClick()"
+  [class]="active ? 'eco-pill eco-pill-active' : 'eco-pill eco-pill-inactive'"
+>
+  <span *ngIf="emoji" class="eco-pill-emoji">{{ emoji }}</span>
+  {{ label }}
+</button>

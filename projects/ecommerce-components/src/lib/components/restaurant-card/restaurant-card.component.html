@@ -1,0 +1,37 @@
+<div class="eco-card">
+  <div class="eco-card-image-container">
+    <img
+      [src]="restaurant.image"
+      [alt]="restaurant.name"
+      class="eco-card-image"
+      loading="lazy"
+    />
+    <div class="eco-card-gradient"></div>
+    <div *ngIf="restaurant.discount" class="eco-card-discount-badge">
+      {{ restaurant.discount }}% OFF
+    </div>
+    <div *ngIf="restaurant.category" class="eco-card-category-badge">
+      {{ restaurant.category }}
+    </div>
+  </div>
+  <div class="eco-card-body">
+    <h3 class="eco-card-name">{{ restaurant.name }}</h3>
+    <div class="eco-card-meta">
+      <span class="eco-card-rating">
+        <span class="eco-card-rating-star">★</span>
+        <span class="eco-card-rating-value">{{ restaurant.rating }}</span>
+      </span>
+      <span class="eco-card-separator">|</span>
+      <span>🕒 {{ restaurant.deliveryTime }} min</span>
+      <span class="eco-card-separator">|</span>
+      <span [class.eco-card-fee-free]="restaurant.deliveryFee === 'Free' || restaurant.deliveryFee === 'Gratis'">
+        {{ restaurant.deliveryFee }}
+      </span>
+    </div>
+    <div *ngIf="restaurant.tags && restaurant.tags.length" class="eco-card-tags">
+      <span *ngFor="let tag of restaurant.tags" class="eco-card-tag">
+        {{ tag }}
+      </span>
+    </div>
+  </div>
+</div>
