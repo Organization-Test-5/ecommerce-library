@@ -1,0 +1,25 @@
+<span class="eco-rating eco-rating--{{ size }}" aria-label="Rating: {{ rating }} out of {{ max }}">
+  <span class="eco-rating__stars" aria-hidden="true">
+    <span
+      *ngFor="let star of stars"
+      class="eco-rating__star eco-rating__star--{{ star }}"
+    >
+      <svg *ngIf="star === 'full'" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1l2.39 4.85L18 6.74l-4 3.9.94 5.5L10 13.4l-4.94 2.74.94-5.5-4-3.9 5.61-.89z"/>
+      </svg>
+      <svg *ngIf="star === 'half'" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="half-fill">
+            <stop offset="50%" stop-color="currentColor"/>
+            <stop offset="50%" stop-color="transparent"/>
+          </linearGradient>
+        </defs>
+        <path d="M10 1l2.39 4.85L18 6.74l-4 3.9.94 5.5L10 13.4l-4.94 2.74.94-5.5-4-3.9 5.61-.89z" fill="url(#half-fill)" stroke="currentColor" stroke-width="0.5"/>
+      </svg>
+      <svg *ngIf="star === 'empty'" viewBox="0 0 20 20" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1l2.39 4.85L18 6.74l-4 3.9.94 5.5L10 13.4l-4.94 2.74.94-5.5-4-3.9 5.61-.89z" stroke-width="1.2"/>
+      </svg>
+    </span>
+  </span>
+  <span *ngIf="reviewCount !== null" class="eco-rating__count">({{ reviewCount }})</span>
+</span>

@@ -1,0 +1,36 @@
+<div
+  class="eco-input-field eco-input-field--{{ size }}"
+  [class.eco-input-field--error]="hasError"
+  [class.eco-input-field--disabled]="disabled"
+>
+  <label *ngIf="label" class="eco-input-field__label">
+    {{ label }}
+    <span *ngIf="required" class="eco-input-field__required" aria-hidden="true">*</span>
+  </label>
+
+  <div class="eco-input-field__wrapper">
+    <input
+      class="eco-input-field__input"
+      [type]="type"
+      [value]="value"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      [readOnly]="readonly"
+      [attr.required]="required ? true : null"
+      [attr.aria-invalid]="hasError ? 'true' : null"
+      [attr.aria-describedby]="(hint || hasError) ? 'input-hint' : null"
+      (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+  </div>
+
+  <p
+    *ngIf="hasError || hint"
+    id="input-hint"
+    class="eco-input-field__message"
+    [class.eco-input-field__message--error]="hasError"
+  >
+    {{ hasError ? error : hint }}
+  </p>
+</div>
